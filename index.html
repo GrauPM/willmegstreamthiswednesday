@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title></title>
+
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet'>
+
+	<style>
+	body {
+		background-color: #000000;
+        font-family: "Raleway";
+	}
+	.center-div {
+		height: 100%;
+		width: 100%;
+		display: flex;
+		position: fixed;
+		align-items: center;
+		justify-content: center;
+        flex-direction: column;
+		color: #fff
+	}
+    .center-div div {
+        padding: 1em;
+        height: 2em;
+    }
+    .center-div #meg-answer {
+        color: #ddd;
+    }
+    .center-div #meg-button {
+        margin-top: 3em;
+        background-color: #000000;
+        border: #fff 1px solid;
+        color: #fff;
+        padding: 1em 2em;
+        text-decoration: underline;
+    }
+    .center-div .quote {
+        margin-top: 3em;
+    }
+    #meg-quote {
+        opacity: 1;
+        transition: opacity 0.5s;
+    }
+    .center-div .footer {
+        padding: 0;
+        justify-self: end;
+    }
+    .hide {
+        opacity: 0 !important;
+    }
+	</style>
+</head>
+
+<body>
+	<div class="center-div">
+        <div class="question">
+            <h1>- H1</h1>
+        </div>
+        <div class="answer">
+            <h2 id="meg-answer"></h2>            
+        </div>
+        <div class="button">
+            <button id="meg-button" onclick="getAnswer()">Click here!</button>            
+        </div>
+        <div class="quote">
+            <span><i id="meg-quote">"Q"</i></span>
+        </div>
+        <div class="footer">
+            <p>By P ©2023</p>
+        </div>
+    </div>
+	<script>
+		function getAnswer() {
+            document.getElementById('meg-answer').textContent= "- " + answers[getRandomNum(answers)]
+            document.getElementById('meg-button').textContent="Maybe ask again?"
+        }
+
+        var elem = document.getElementById('meg-quote')
+        setInterval(changeQuote, 2500);
+
+        function changeQuote() {
+            elem.classList.add('hide');
+            setTimeout(function () {
+                elem.innerHTML = '"' + quotes[getRandomNum(quotes)] + '"'
+                elem.classList.remove('hide');
+            }, 500);
+        }
+
+
+        let answers = [
+            "No",
+            "Nope",
+            "Hahahahaha",
+            "Nnnnnope... also ban Pantuuh",
+            "Sorry, the Deathrite bird killed Meg :(",
+            "Click the button again in 5 minutes",
+            "Meg went backpacking for 4 months again",
+            "A Meg is never late nor is she early she arrives precisely when she means to",
+            "Where are the turtles?! Where are they?"
+        ]
+        let quotes = [
+            "a",
+            "b", 
+            "c"
+        ]
+        function getRandomNum(list) {
+            return Math.floor(Math.random() * list.length)
+        }
+	</script>
+</body>
+
+</html>
